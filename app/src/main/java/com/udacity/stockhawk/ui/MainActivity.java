@@ -22,7 +22,12 @@ import android.widget.Toast;
 import com.udacity.stockhawk.R;
 import com.udacity.stockhawk.data.Contract;
 import com.udacity.stockhawk.data.PrefUtils;
+import com.udacity.stockhawk.events.IncorrectStockEvent;
 import com.udacity.stockhawk.sync.QuoteSyncJob;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -83,6 +88,24 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
 
 
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        EventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onMessageEvent(IncorrectStockEvent event) {
+        Toast.makeText(this, R.string.incorrect_stock, Toast.LENGTH_LONG).show();
+    }
+
 
     private boolean networkUp() {
         ConnectivityManager cm =
