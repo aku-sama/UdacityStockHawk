@@ -5,8 +5,8 @@
     android:layout_height="?android:attr/listPreferredItemHeight"
     android:gravity="center_vertical"
     android:orientation="horizontal"
-    android:paddingEnd="16dp"
-    android:paddingStart="16dp">
+    android:paddingEnd="@dimen/activity_horizontal_margin"
+    android:paddingStart="@dimen/activity_horizontal_margin">
 
     <TextView
         android:id="@+id/symbol"
@@ -28,7 +28,7 @@
             style="@style/BidPriceTextStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="10sp"
+            android:layout_marginEnd="@dimen/gap_10"
             android:textDirection="locale"
             tools:text="1000.00" />
 
@@ -38,8 +38,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/percent_change_pill_green"
-            android:paddingEnd="3dp"
-            android:paddingStart="3dp"
+            android:paddingEnd="@dimen/gap_3"
+            android:paddingStart="@dimen/gap_3"
             android:textDirection="locale"
             tools:text="100%" />
     </LinearLayout>

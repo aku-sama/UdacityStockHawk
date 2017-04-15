@@ -5,4 +5,6 @@
     <dimen name="widget_detail_default_height">180dp</dimen>
     <dimen name="widget_detail_min_resize_width">220dp</dimen>
     <dimen name="widget_detail_min_resize_height">@dimen/widget_detail_default_height</dimen>
+    <dimen name="gap_10">10sp</dimen>
+    <dimen name="gap_3">3dp</dimen>
 </resources>
