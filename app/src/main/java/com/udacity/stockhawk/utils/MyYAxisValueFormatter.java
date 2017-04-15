@@ -1,26 +1,25 @@
-package com.udacity.stockhawk.ui;
+package com.udacity.stockhawk.utils;
 
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 
-import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 
 /**
  * Created by Diana.Raspopova on 4/15/2017.
  */
 
-public class MyXAxisValueFormatter implements IAxisValueFormatter {
+public class MyYAxisValueFormatter implements IAxisValueFormatter {
 
-    private DecimalFormat mFormat;
+    SimpleDateFormat mFormat;
 
-    public MyXAxisValueFormatter() {
-        mFormat =  new DecimalFormat("0.00");
+    public MyYAxisValueFormatter() {
+        mFormat = new SimpleDateFormat("dd.MM.yy");
     }
 
     @Override
     public String getFormattedValue(float value, AxisBase axis) {
-        return mFormat.format(value)+ " $";
+        return mFormat.format(value);
     }
 
 
