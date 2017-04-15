@@ -33,5 +33,6 @@
     <string name="toast_no_connectivity">Will refresh when network available.</string>
     <string name="add_new_stock">Add new stock</string>
     <string name="incorrect_stock">Incorrect stock symbol</string>
+    <string name="error_out_of_date">No network connectivity! Your stock out of date.</string>
 
 </resources>
