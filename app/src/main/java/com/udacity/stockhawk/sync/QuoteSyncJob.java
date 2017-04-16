@@ -78,8 +78,8 @@ public final class QuoteSyncJob {
 
 
                 Stock stock = quotes.get(symbol);
-                StockQuote quote = stock.getQuote();
-                if (!isCorruptedQuote(quote)) {
+                if (!isCorruptedQuote(stock)) {
+                    StockQuote quote = stock.getQuote();
                     float price = quote.getPrice().floatValue();
                     float change = quote.getChange().floatValue();
                     float percentChange = quote.getChangeInPercent().floatValue();
@@ -110,7 +110,7 @@ public final class QuoteSyncJob {
                 } else {
                     //remove if corrupted
                     EventBus.getDefault().post(new IncorrectStockEvent());
-                    PrefUtils.removeStock(context, quote.getSymbol());
+                    PrefUtils.removeStock(context, symbol);
                 }
             }
 
@@ -144,8 +144,8 @@ public final class QuoteSyncJob {
         scheduler.schedule(builder.build());
     }
 
-    public static boolean isCorruptedQuote(StockQuote quote) {
-        return quote.getLastTradeTimeStr().equals("N/A");
+    public static boolean isCorruptedQuote(Stock stock) {
+        return stock == null || stock.getQuote().getLastTradeTimeStr().equals("N/A");
     }
 
     public static synchronized void initialize(final Context context) {
